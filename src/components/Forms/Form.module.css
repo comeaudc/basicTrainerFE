@@ -1,0 +1,13 @@
+.formLayout{
+    display: flex;
+    flex-direction: column;
+}
+
+.userToggle{
+    text-decoration: underline;
+}
+
+.userToggle:hover{
+    color: rgba(182, 182, 182, 0.654);
+    cursor: pointer;
+}
