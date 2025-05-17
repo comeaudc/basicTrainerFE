@@ -17,12 +17,38 @@ export default function RegisterForm({ setNewUser }) {
 
   return (
     <form className={styles.formLayout}>
-      <input onChange={handleChange} type="text" name="firstName" placeholder="First Name..." />
-      <input onChange={handleChange} type="text" name="lastName" placeholder="Last Name..." />
-      <input onChange={handleChange} type="text" name="username" placeholder="UserName (opt)..." />
-      <input onChange={handleChange} type="text" name="email" placeholder="Email..." />
-      <input onChange={handleChange} type="password" name="password" placeholder="Password..." />
       <input
+        onChange={handleChange}
+        type="text"
+        name="firstName"
+        placeholder="First Name..."
+      />
+      <input
+        onChange={handleChange}
+        type="text"
+        name="lastName"
+        placeholder="Last Name..."
+      />
+      <input
+        onChange={handleChange}
+        type="text"
+        name="username"
+        placeholder="UserName (opt)..."
+      />
+      <input
+        onChange={handleChange}
+        type="text"
+        name="email"
+        placeholder="Email..."
+      />
+      <input
+        onChange={handleChange}
+        type="password"
+        name="password"
+        placeholder="Password..."
+      />
+      <input
+        onChange={handleChange}
         type="password"
         name="password2"
         placeholder="Confirm Password..."

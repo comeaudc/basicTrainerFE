@@ -1,6 +1,7 @@
 .formLayout{
     display: flex;
     flex-direction: column;
+    margin: auto;
 }
 
 .userToggle{
