@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 
 // Components
 import Nav from "./components/Nav/Nav";
+import ProtectedRoutes from "./components/ProtectedRoutes";
 
 import "./App.css";
 
@@ -19,7 +20,9 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/auth" element={<AuthPage />} />
-          <Route path="/dashboard" element={<Dashbord />} />
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/dashboard" element={<Dashbord />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

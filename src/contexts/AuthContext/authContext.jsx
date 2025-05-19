@@ -10,23 +10,15 @@ export default function AuthProvider({ children }) {
   const url = "http://localhost:3000/api";
 
   async function signUp(formData) {
-    try {
-      let res = await axios.post(`${url}/users`, formData);
+    let res = await axios.post(`${url}/users`, formData);
 
-      setCookie("token", res.data.token);
-    } catch (err) {
-      console.error(err.message);
-    }
+    setCookie("token", res.data.token);
   }
 
   async function login(formData) {
-    try {
-      let res = await axios.post(`${url}/auth`, formData);
+    let res = await axios.post(`${url}/auth`, formData);
 
-      setCookie("token", res.data.token);
-    } catch (err) {
-      console.error(err);
-    }
+    setCookie("token", res.data.token);
   }
 
   function logout() {
