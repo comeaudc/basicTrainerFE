@@ -30,7 +30,7 @@ export default function Dashboard() {
 
   return (
     <div className="dashboardDiv">
-      <StartWorkoutButton currentWO={true} />
+      <StartWorkoutButton currentWO={currentWO} />
       <DashboardContainer>
         <h1>Current Workout</h1>
       </DashboardContainer>
