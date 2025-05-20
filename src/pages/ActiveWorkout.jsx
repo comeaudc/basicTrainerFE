@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import apiController from "../utilities/apiControllers.mjs";
 
 // Contexts
 import { userInfo } from "../contexts/UserContext/userContext";
@@ -12,22 +12,15 @@ export default function ActiveWorkout() {
   const { cookies } = useAuth();
   const { currentWO, setCurrentWO } = userInfo();
 
-  async function startWorkout() {
-    try {
-      let res = await axios.post("http://localhost:3000/api/workout", null, {
-        headers: { "x-auth-token": cookies.token },
-      });
-
-      console.log(res.data);
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
   useEffect(() => {
-    if (!currentWO) {
-      startWorkout();
-    }
+    let loadData = async () => {
+      if (!currentWO) {
+        let workout = await apiController.startWorkout(cookies.token);
+        setCurrentWO(workout);
+      }
+    };
+
+    loadData()
   }, []);
 
   return <h1>Active Workout</h1>;

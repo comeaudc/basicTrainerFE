@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useAuth } from "../contexts/AuthContext/authContext";
 import { userInfo } from "../contexts/UserContext/userContext";
-import axios from "axios";
+import apiController from "../utilities/apiControllers.mjs";
 
 // Components
 import DashboardContainer from "../components/DashboardContainer/DashboardContainer";
@@ -11,21 +11,16 @@ export default function Dashboard() {
   const { cookies } = useAuth();
   const { setUser, setCurrentWO, currentWO, user } = userInfo();
 
-  async function getUser() {
-    try {
-      let res = await axios.get("http://localhost:3000/api/auth", {
-        headers: { "x-auth-token": cookies.token },
-      });
-
-      setUser(res.data.name);
-      setCurrentWO(res.data.currentWorkout);
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
   useEffect(() => {
-    getUser();
+    let loadUser = async () => {
+      if (!user) {
+        let userdata = await apiController.getUser(cookies.token);
+        setUser(userdata.name);
+        setCurrentWO(userdata.currentWorkout);
+      }
+    };
+
+    loadUser();
   }, []);
 
   return (
